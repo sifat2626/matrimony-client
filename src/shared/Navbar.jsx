@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import logo from "/title.jpg";
+import logo from "../assets/images/matri.jpg";
 import { Link, NavLink } from "react-router-dom";
 import { FaPlusSquare } from "react-icons/fa";
 import { IoMoon, IoSunny } from "react-icons/io5";
@@ -37,19 +37,28 @@ function Navbar() {
       <li>
         <NavLink
           className={"hover:text-job duration-300 font-medium tracking-widest"}
-          to={"/all-jobs"}
+          to={"/bio-datas"}
           style={navLinkStyles}
         >
-          All Jobs
+          Biodatas
         </NavLink>
       </li>
       <li>
         <NavLink
           className={"hover:text-job duration-300 font-medium tracking-widest"}
-          to={"/blogs"}
+          to={"/about-us"}
           style={navLinkStyles}
         >
-          Blogs
+          About Us
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={"hover:text-job duration-300 font-medium tracking-widest"}
+          to={"/contact"}
+          style={navLinkStyles}
+        >
+          Contact
         </NavLink>
       </li>
     </>
@@ -87,7 +96,7 @@ function Navbar() {
             to={"/"}
             className="text-xl font-bold text-job dark:text-gray-200"
           >
-            Gable
+            TieTheKnot
           </Link>
         </div>
       </div>
@@ -150,20 +159,9 @@ function Navbar() {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-green-700 text-white font-medium rounded-box w-52"
             >
               <li>
-                <Link to={"/profile"}>User Profile</Link>
+                <Link to={"/dashboard"}>Dashboard</Link>
               </li>
-              <li>
-                <Link to={"/add-job"}>Add Job</Link>
-              </li>
-              <li>
-                <Link to={"/my-jobs"}>My Jobs</Link>
-              </li>
-              <li>
-                <Link to={"/applied-jobs"}>Applied Jobs</Link>
-              </li>
-              <li>
-                <Link to={"/add-blog"}>Add Blog</Link>
-              </li>
+
               <li>
                 <Link onClick={logOut}>Logout</Link>
               </li>
