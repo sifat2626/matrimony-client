@@ -7,9 +7,11 @@ import Register from "../pages/Register";
 import BioDatas from "../pages/BioDatas";
 import AboutUs from "../pages/AboutUs";
 import Contact from "../pages/Contact";
-import Dashboard from "../pages/Dashboard/Dashboard";
 import Details from "../shared/Details";
 import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../Dashboard/Dashboard";
+import Stats from "../Dashboard/Pages/Stats";
+import EditBio from "../Dashboard/Pages/User/EditBio";
 
 const router = createBrowserRouter([
   {
@@ -41,10 +43,7 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
-      {
-        path: "/dashboard",
-        element: <Dashboard />,
-      },
+
       {
         path: "/details/:id",
         element: (
@@ -52,6 +51,20 @@ const router = createBrowserRouter([
             <Details />
           </PrivateRoute>
         ),
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+    children: [
+      {
+        index: true,
+        element: <Stats />,
+      },
+      {
+        path: "edit-bio",
+        element: <EditBio />,
       },
     ],
   },
