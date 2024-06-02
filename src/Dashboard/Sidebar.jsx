@@ -5,7 +5,7 @@ function Sidebar() {
   const [open, setOpen] = useState(true);
   return (
     <div
-      className={`relative min-h-screen w-64 bg-red-500 duration-300 ${
+      className={`relative min-h-screen h-full w-64 bg-red-500 duration-300 ${
         !open && "-translate-x-[100%]"
       }`}
     >

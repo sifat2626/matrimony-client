@@ -15,13 +15,13 @@ const Registration = () => {
   const handleGoogleSignIn = async () => {
     try {
       const result = await signInWithGoogle();
-      // const { data } = await axios.post(
-      //   `${import.meta.env.VITE_API_URL}/jwt`,
-      //   {
-      //     email: result?.user?.email,
-      //   },
-      //   { withCredentials: true }
-      // );
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/jwt`,
+        {
+          email: result?.user?.email,
+        },
+        { withCredentials: true }
+      );
       toast.success("Login Successful");
       navigate(from, { replace: true });
     } catch (error) {

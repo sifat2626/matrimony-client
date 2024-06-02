@@ -3,10 +3,12 @@ import bgImg from "../assets/images/login.jpg";
 import logo from "../assets/images/logo.png";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
-import axios from "axios";
 import useAuth from "../hooks/useAuth";
+import useAxiosCommon from "../hooks/useAxiosCommon";
+import axios from "axios";
 
 const Login = () => {
+  const axiosCommon = useAxiosCommon();
   const location = useLocation();
   const navigate = useNavigate();
   const { signIn, signInWithGoogle, user } = useAuth();
@@ -16,13 +18,18 @@ const Login = () => {
   const handleGoogleSignIn = async () => {
     try {
       const result = await signInWithGoogle();
-      // const { data } = await axios.post(
-      //   `${import.meta.env.VITE_API_URL}/jwt`,
-      //   {
-      //     email: result?.user?.email,
-      //   },
-      //   { withCredentials: true }
-      // );
+      await axiosCommon.post(
+        `${import.meta.env.VITE_API_URL}/jwt`,
+        {
+          email: result?.user?.email,
+        },
+        { withCredentials: true }
+      );
+      const { data } = await axiosCommon.post("/users", {
+        email: result?.user?.email,
+        name: result?.user?.displayName,
+      });
+      console.log(data);
       toast.success("Login Successful");
       navigate(from, { replace: true });
     } catch (error) {
@@ -44,13 +51,13 @@ const Login = () => {
     const pass = form.password.value;
     try {
       const result = await signIn(email, pass);
-      // const { data } = await axios.post(
-      //   `${import.meta.env.VITE_API_URL}/jwt`,
-      //   {
-      //     email: result?.user?.email,
-      //   },
-      //   { withCredentials: true }
-      // );
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/jwt`,
+        {
+          email: result?.user?.email,
+        },
+        { withCredentials: true }
+      );
       toast.success("Login Successful");
       console.log(result);
       navigate(from, { replace: true });
@@ -166,7 +173,7 @@ const Login = () => {
             <span className="w-1/5 border-b  md:w-1/4"></span>
 
             <Link
-              to="/registration"
+              to="/register"
               className="text-xs text-gray-500 uppercase  hover:underline"
             >
               or sign up
