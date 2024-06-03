@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 
 function Biodata({ biodata }) {
   const {
-    _id,
     biodataId,
     biodataType,
     profileImage,
@@ -20,7 +19,7 @@ function Biodata({ biodata }) {
       <p>{permanentDivision}</p>
       <p>{age}</p>
       <p>{occupation}</p>
-      <Link to={`/details/${_id}`}>View Details</Link>
+      <Link to={`/details/${biodataId}`}>View Details</Link>
     </div>
   );
 }

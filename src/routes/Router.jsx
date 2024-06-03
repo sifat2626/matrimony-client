@@ -7,11 +7,12 @@ import Register from "../pages/Register";
 import BioDatas from "../pages/BioDatas";
 import AboutUs from "../pages/AboutUs";
 import Contact from "../pages/Contact";
-import Details from "../shared/Details";
+import Details from "../pages/Details";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Dashboard/Dashboard";
 import Stats from "../Dashboard/Pages/Stats";
 import EditBio from "../Dashboard/Pages/User/EditBio";
+import CheckOut from "../pages/CheckOut";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Details />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/checkout/:biodataId",
+        element: (
+          <PrivateRoute>
+            <CheckOut />
           </PrivateRoute>
         ),
       },

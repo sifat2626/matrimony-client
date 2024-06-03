@@ -25,10 +25,12 @@ const Login = () => {
         },
         { withCredentials: true }
       );
+      console.log(result?.user?.email, result?.user?.displayName);
       const { data } = await axiosCommon.post("/users", {
         email: result?.user?.email,
         name: result?.user?.displayName,
       });
+
       console.log(data);
       toast.success("Login Successful");
       navigate(from, { replace: true });
