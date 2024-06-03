@@ -167,13 +167,12 @@ function EditBio() {
           <label className="label">
             <span className="label-text">Race</span>
           </label>
-          <input
-            type="text"
-            name="race"
-            placeholder="Race"
-            className="input input-bordered"
-            required
-          />
+          <select name="race" className="input input-bordered" required>
+            <option value="Fair">Fair</option>
+            <option value="Medium">Medium</option>
+            <option value="Brown">Brown</option>
+            <option value="Dark">Dark</option>
+          </select>
         </div>
 
         <div className="form-control">
@@ -216,7 +215,7 @@ function EditBio() {
             <option value="Rangpur">Rangpur</option>
             <option value="Barisal">Barisal</option>
             <option value="Khulna">Khulna</option>
-            <option value="Maymansign">Maymansign</option>
+            <option value="Mymensingh">Mymensingh</option>
             <option value="Sylhet">Sylhet</option>
           </select>
         </div>
