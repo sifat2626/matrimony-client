@@ -5,7 +5,7 @@ import Sidebar from "./Sidebar";
 
 function Dashboard() {
   return (
-    <div className="">
+    <div className="overflow-x-hidden">
       <Navbar />
 
       <div className="flex gap-16">

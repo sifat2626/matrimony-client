@@ -53,7 +53,7 @@ const Login = () => {
     const pass = form.password.value;
     try {
       const result = await signIn(email, pass);
-      const { data } = await axios.post(
+      await axios.post(
         `${import.meta.env.VITE_API_URL}/jwt`,
         {
           email: result?.user?.email,
@@ -62,6 +62,10 @@ const Login = () => {
       );
       toast.success("Login Successful");
       console.log(result);
+      await axiosCommon.post("/users", {
+        email: result?.user?.email,
+        name: result?.user?.displayName,
+      });
       navigate(from, { replace: true });
     } catch (error) {
       toast.error("Email or password didn't match!");
