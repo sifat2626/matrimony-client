@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
@@ -6,17 +6,26 @@ function CheckOut() {
   const axiosSecure = useAxiosSecure();
   const { biodataId } = useParams();
   const { user } = useAuth();
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     // const stripeCardNumber = form.stripeCardNumber.value;
-    const result = await axiosSecure.post(`/request/${biodataId}`);
-    console.log(result);
+    try {
+      const result = await axiosSecure.post(`/request/${biodataId}`);
+      console.log(result);
+      // Navigate to the my-contact-requests page after successful submission
+      navigate("/dashboard/my-contact-requests");
+    } catch (error) {
+      console.error("Failed to submit request:", error);
+    }
   };
+
   return (
     <div>
       <h2>CheckOut</h2>
-      <form action="" onSubmit={(e) => handleSubmit(e)}>
+      <form action="" onSubmit={handleSubmit}>
         <input
           type="email"
           name="email"
@@ -38,7 +47,7 @@ function CheckOut() {
           disabled
           className="input input-bordered w-full"
         />
-        <button>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

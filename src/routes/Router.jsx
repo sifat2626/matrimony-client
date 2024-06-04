@@ -15,6 +15,7 @@ import EditBio from "../Dashboard/Pages/User/EditBio";
 import CheckOut from "../pages/CheckOut";
 import ManageContactRequests from "../Dashboard/Pages/Admin/ManageContactRequests";
 import AdminRoute from "./AdminRoute";
+import MyContactRequests from "../Dashboard/Pages/User/MyContactRequests";
 
 const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
       {
         path: "edit-bio",
         element: <EditBio />,
+      },
+      {
+        path: "my-contact-requests",
+        element: <MyContactRequests />,
       },
       {
         path: "contact-requests",

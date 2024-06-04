@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
 import AdminMenu from "./Pages/Admin/AdminMenu";
+import UserMenu from "./Pages/User/UserMenu";
 
 function Sidebar() {
   const [open, setOpen] = useState(true);
@@ -15,10 +15,7 @@ function Sidebar() {
       </div>
       <div className="flex flex-col gap-4">
         <AdminMenu />
-
-        <NavLink to={"edit-bio"} end>
-          Edit BioData
-        </NavLink>
+        <UserMenu />
       </div>
     </div>
   );
