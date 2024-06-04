@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
+import { FaTrashCan } from "react-icons/fa6";
 import { GiConfirmed } from "react-icons/gi";
 import { Link } from "react-router-dom";
 
-function ContactRequestRow({ request, index, handleAccept }) {
+function ContactRequestRow({ request, index, handleAccept, handleReject }) {
   const { requestTime, userEmail, contactId } = request;
 
   return (
@@ -26,7 +27,9 @@ function ContactRequestRow({ request, index, handleAccept }) {
         <button onClick={() => handleAccept(userEmail, contactId)}>
           <GiConfirmed />
         </button>
-        <button>Delete</button>
+        <button onClick={() => handleReject(userEmail, contactId)}>
+          <FaTrashCan />
+        </button>
       </td>
     </tr>
   );

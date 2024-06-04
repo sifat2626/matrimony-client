@@ -19,6 +19,10 @@ function ManageContactRequests() {
     await axiosSecure.post(`accept/${email}/${id}`);
     refetch();
   };
+  const handleReject = async (email, id) => {
+    await axiosSecure.post(`reject/${email}/${id}`);
+    refetch();
+  };
 
   if (isPending) return "Loading...";
   return (
@@ -80,6 +84,7 @@ function ManageContactRequests() {
                         index={i}
                         request={request}
                         handleAccept={handleAccept}
+                        handleReject={handleReject}
                       />
                     ))}
                   </tbody>
