@@ -1,8 +1,11 @@
+import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 function CheckOut() {
+  const stripe = useStripe();
+  const elements = useElements();
   const axiosSecure = useAxiosSecure();
   const { biodataId } = useParams();
   const { user } = useAuth();
@@ -10,22 +13,54 @@ function CheckOut() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const form = e.target;
-    // const stripeCardNumber = form.stripeCardNumber.value;
+
+    if (!stripe || !elements) {
+      return;
+    }
+
     try {
-      const result = await axiosSecure.post(`/request/${biodataId}`);
-      console.log(result);
-      // Navigate to the my-contact-requests page after successful submission
-      navigate("/dashboard/my-contact-requests");
+      // Create a payment intent on the server
+      const { data: paymentIntent } = await axiosSecure.post(
+        "/create-payment-intent",
+        {
+          amount: 500,
+          email: user.email,
+          biodataId,
+        }
+      );
+
+      // Confirm the payment on the client
+      const result = await stripe.confirmCardPayment(
+        paymentIntent.clientSecret,
+        {
+          payment_method: {
+            card: elements.getElement(CardElement),
+            billing_details: {
+              email: user.email,
+            },
+          },
+        }
+      );
+
+      if (result.error) {
+        console.error(result.error.message);
+      } else {
+        if (result.paymentIntent.status === "succeeded") {
+          // Call your backend API after successful payment
+          await axiosSecure.post(`/request/${biodataId}`);
+          // Navigate to the my-contact-requests page
+          navigate("/dashboard/my-contact-requests");
+        }
+      }
     } catch (error) {
-      console.error("Failed to submit request:", error);
+      console.error("Failed to process payment:", error);
     }
   };
 
   return (
     <div>
       <h2>CheckOut</h2>
-      <form action="" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <input
           type="email"
           name="email"
@@ -40,14 +75,10 @@ function CheckOut() {
           disabled
           className="input input-bordered w-full"
         />
-        <input
-          type="number"
-          name="stripeCardNumber"
-          defaultValue={4242}
-          disabled
-          className="input input-bordered w-full"
-        />
-        <button type="submit">Submit</button>
+        <CardElement />
+        <button type="submit" disabled={!stripe}>
+          Submit
+        </button>
       </form>
     </div>
   );
