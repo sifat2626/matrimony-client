@@ -3,6 +3,9 @@ import { NavLink } from "react-router-dom";
 function UserMenu() {
   return (
     <>
+      <NavLink to={"view-biodata"} end>
+        View Biodata
+      </NavLink>
       <NavLink to={"edit-bio"} end>
         Edit BioData
       </NavLink>

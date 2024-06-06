@@ -20,6 +20,9 @@ function AdminMenu() {
         <NavLink to={"users"} end>
           Manage Users
         </NavLink>
+        <NavLink to={"approve/premium"} end>
+          Approve Premium
+        </NavLink>
       </>
     )
   );

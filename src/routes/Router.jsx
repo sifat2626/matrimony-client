@@ -17,6 +17,8 @@ import AdminRoute from "./AdminRoute";
 import MyContactRequests from "../Dashboard/Pages/User/MyContactRequests";
 import Stats from "../Dashboard/Pages/Admin/Stats";
 import ManageUsers from "../Dashboard/Pages/Admin/ManageUsers";
+import ViewBiodata from "../Dashboard/Pages/Admin/ViewBiodata";
+import ApprovePremium from "../Dashboard/Pages/Admin/ApprovePremium";
 
 const router = createBrowserRouter([
   {
@@ -85,7 +87,19 @@ const router = createBrowserRouter([
       },
       {
         path: "my-contact-requests",
-        element: <MyContactRequests />,
+        element: (
+          <PrivateRoute>
+            <MyContactRequests />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "view-biodata",
+        element: (
+          <PrivateRoute>
+            <ViewBiodata />
+          </PrivateRoute>
+        ),
       },
       {
         path: "contact-requests",
@@ -100,6 +114,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ManageUsers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "approve/premium",
+        element: (
+          <AdminRoute>
+            <ApprovePremium />
           </AdminRoute>
         ),
       },

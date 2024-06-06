@@ -1,14 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import { axiosSecure } from "../../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import ContactRequestRow from "../../../components/Dashboard/Admin/ContactRequestRow";
 
 function ManageContactRequests() {
+  const axiosSecure = useAxiosSecure();
   const {
     isPending,
     data: requests = [],
     refetch,
   } = useQuery({
-    queryKey: ["contact-reqests"],
+    queryKey: ["contact-requests"],
     queryFn: async () => {
       const { data } = await axiosSecure("/requests");
       return data;
