@@ -10,12 +10,13 @@ import Contact from "../pages/Contact";
 import Details from "../pages/Details";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Dashboard/Dashboard";
-import Stats from "../Dashboard/Pages/Stats";
 import EditBio from "../Dashboard/Pages/User/EditBio";
 import CheckOut from "../pages/CheckOut";
 import ManageContactRequests from "../Dashboard/Pages/Admin/ManageContactRequests";
 import AdminRoute from "./AdminRoute";
 import MyContactRequests from "../Dashboard/Pages/User/MyContactRequests";
+import Stats from "../Dashboard/Pages/Admin/Stats";
+import ManageUsers from "../Dashboard/Pages/Admin/ManageUsers";
 
 const router = createBrowserRouter([
   {
@@ -91,6 +92,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ManageContactRequests />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "users",
+        element: (
+          <AdminRoute>
+            <ManageUsers />
           </AdminRoute>
         ),
       },

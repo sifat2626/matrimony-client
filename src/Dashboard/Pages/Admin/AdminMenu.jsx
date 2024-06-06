@@ -12,10 +12,13 @@ function AdminMenu() {
     role === "admin" && (
       <>
         <NavLink to={"/dashboard"} end>
-          Stats
+          Admin Dashboard
         </NavLink>
         <NavLink to={"contact-requests"} end>
           Manage Contact Requests
+        </NavLink>
+        <NavLink to={"users"} end>
+          Manage Users
         </NavLink>
       </>
     )
