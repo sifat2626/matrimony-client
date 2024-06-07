@@ -23,6 +23,9 @@ function AdminMenu() {
         <NavLink to={"approve/premium"} end>
           Approve Premium
         </NavLink>
+        <NavLink to={"success-stories"} end>
+          Success Stories
+        </NavLink>
       </>
     )
   );

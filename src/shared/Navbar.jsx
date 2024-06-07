@@ -1,26 +1,15 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
 import logo from "../assets/images/matri.jpg";
 import { Link, NavLink } from "react-router-dom";
 import { FaPlusSquare } from "react-icons/fa";
 import { IoMoon, IoSunny } from "react-icons/io5";
 import useAuth from "../hooks/useAuth";
-import { getLocalTheme, setLocalTheme } from "../utils/localStorage";
-function Navbar() {
+function Navbar({ darkModeHandler, dark }) {
   const { user, logOut } = useAuth();
-  const [dark, setDark] = useState(() => {
-    return getLocalTheme() === "light";
-  });
 
-  const darkModeHandler = () => {
-    console.log(getLocalTheme());
-    setDark(!dark);
-    setLocalTheme(!dark === "ligth" ? "light" : "dark");
-    document.body.classList.toggle("dark");
-  };
   const navLinkStyles = ({ isActive }) => {
     return {
-      color: isActive ? "#4BCC5A" : "",
+      color: isActive ? "#bd8a4c" : "",
     };
   };
   const navList = (
@@ -64,7 +53,7 @@ function Navbar() {
     </>
   );
   return (
-    <div className="navbar bg-white dark:bg-green-700 px-[5%] py-4 shadow-md">
+    <div className="navbar bg-white dark:bg-[#66451C] px-[5%] py-4 shadow-md">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

@@ -1,62 +1,100 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import toast from "react-hot-toast";
+import { useState, useEffect } from "react";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 function EditBio() {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const form = e.target;
+  const [biodata, setBiodata] = useState({
+    biodataType: "",
+    name: "",
+    profileImage: "",
+    dateOfBirth: "",
+    height: "",
+    weight: "",
+    age: "",
+    occupation: "",
+    race: "",
+    fathersName: "",
+    mothersName: "",
+    permanentDivision: "",
+    presentDivision: "",
+    expectedPartnerAge: "",
+    expectedPartnerHeight: "",
+    expectedPartnerWeight: "",
+    mobileNumber: "",
+  });
 
-    const biodata = {
-      contactEmail: user.email, // Use user.email for contactEmail and ensure it matches schema
-      biodataType: form.biodataType.value,
-      name: form.name.value,
-      profileImage: form.profileImage.value,
-      dateOfBirth: form.dateOfBirth.value,
-      height: parseInt(form.height.value, 10), // Ensure height is a number
-      weight: parseInt(form.weight.value, 10), // Ensure weight is a number
-      age: parseInt(form.age.value, 10), // Ensure age is a number
-      occupation: form.occupation.value,
-      race: form.race.value,
-      fathersName: form.fathersName.value,
-      mothersName: form.mothersName.value,
-      permanentDivision: form.permanentDivision.value,
-      presentDivision: form.presentDivision.value,
-      expectedPartnerAge: parseInt(form.expectedPartnerAge.value, 10) || null, // Ensure expected partner age is a number or null
-      expectedPartnerHeight:
-        parseInt(form.expectedPartnerHeight.value, 10) || null, // Ensure expected partner height is a number or null
-      expectedPartnerWeight:
-        parseInt(form.expectedPartnerWeight.value, 10) || null, // Ensure expected partner weight is a number or null
-      mobileNumber: form.mobileNumber.value,
+  const calculateAge = (dob) => {
+    const birthDate = new Date(dob);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      age--;
+    }
+    return age;
+  };
+
+  useEffect(() => {
+    const fetchBiodata = async () => {
+      try {
+        const response = await axiosSecure.get(
+          `/biodata/byEmail/${user.email}`
+        );
+        if (response.status === 200) {
+          const fetchedBiodata = response.data;
+          fetchedBiodata.age = calculateAge(fetchedBiodata.dateOfBirth);
+          setBiodata(fetchedBiodata);
+        }
+      } catch (error) {
+        console.error("Error fetching biodata", error);
+      }
     };
 
+    fetchBiodata();
+  }, [user.email, axiosSecure]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      const result = await axiosSecure.post("/biodata", biodata);
-      if (result.status === 200) {
-        toast.success("Biodata updated successfully");
-        e.target.reset();
-      }
+      await axiosSecure.post("/biodata", biodata);
+      console.log("toast");
+      toast.success("Biodata updated successfully");
     } catch (error) {
       console.error("Error creating biodata", error);
     }
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setBiodata((prevBiodata) => {
+      const updatedBiodata = { ...prevBiodata, [name]: value };
+      if (name === "dateOfBirth") {
+        updatedBiodata.age = calculateAge(value);
+      }
+      return updatedBiodata;
+    });
+  };
+
   return (
     <div>
-      <form className="card-body" onSubmit={(e) => handleSubmit(e)}>
+      <form className="card-body" onSubmit={handleSubmit}>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
           </label>
           <input
             type="email"
-            name="email"
-            defaultValue={user.email}
+            name="contactEmail"
+            value={user.email}
             className="input input-bordered"
             required
             readOnly
@@ -67,7 +105,16 @@ function EditBio() {
           <label className="label">
             <span className="label-text">Biodata Type</span>
           </label>
-          <select name="biodataType" className="input input-bordered" required>
+          <select
+            name="biodataType"
+            className="input input-bordered"
+            value={biodata.biodataType}
+            onChange={handleChange}
+            required
+          >
+            <option disabled value="">
+              Select Biodata Type
+            </option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
           </select>
@@ -80,7 +127,8 @@ function EditBio() {
           <input
             type="text"
             name="name"
-            placeholder="Name"
+            value={biodata.name}
+            onChange={handleChange}
             className="input input-bordered"
             required
           />
@@ -93,7 +141,8 @@ function EditBio() {
           <input
             type="text"
             name="profileImage"
-            placeholder="Profile Image URL"
+            value={biodata.profileImage}
+            onChange={handleChange}
             className="input input-bordered"
             required
           />
@@ -106,8 +155,9 @@ function EditBio() {
           <input
             type="date"
             name="dateOfBirth"
+            value={biodata.dateOfBirth}
+            onChange={handleChange}
             className="input input-bordered"
-            required
           />
         </div>
 
@@ -118,7 +168,8 @@ function EditBio() {
           <input
             type="number"
             name="height"
-            placeholder="Height in cm"
+            value={biodata.height}
+            onChange={handleChange}
             className="input input-bordered"
             required
           />
@@ -131,7 +182,8 @@ function EditBio() {
           <input
             type="number"
             name="weight"
-            placeholder="Weight in kg"
+            value={biodata.weight}
+            onChange={handleChange}
             className="input input-bordered"
             required
           />
@@ -144,9 +196,9 @@ function EditBio() {
           <input
             type="number"
             name="age"
-            placeholder="Age"
+            value={biodata.age}
             className="input input-bordered"
-            required
+            readOnly
           />
         </div>
 
@@ -157,7 +209,8 @@ function EditBio() {
           <input
             type="text"
             name="occupation"
-            placeholder="Occupation"
+            value={biodata.occupation}
+            onChange={handleChange}
             className="input input-bordered"
             required
           />
@@ -167,7 +220,16 @@ function EditBio() {
           <label className="label">
             <span className="label-text">Race</span>
           </label>
-          <select name="race" className="input input-bordered" required>
+          <select
+            name="race"
+            className="input input-bordered"
+            value={biodata.race}
+            onChange={handleChange}
+            required
+          >
+            <option value="" disabled>
+              Select Race
+            </option>
             <option value="Fair">Fair</option>
             <option value="Medium">Medium</option>
             <option value="Brown">Brown</option>
@@ -182,7 +244,8 @@ function EditBio() {
           <input
             type="text"
             name="fathersName"
-            placeholder="Father's Name"
+            value={biodata.fathersName}
+            onChange={handleChange}
             className="input input-bordered"
             required
           />
@@ -195,7 +258,8 @@ function EditBio() {
           <input
             type="text"
             name="mothersName"
-            placeholder="Mother's Name"
+            value={biodata.mothersName}
+            onChange={handleChange}
             className="input input-bordered"
             required
           />
@@ -208,8 +272,13 @@ function EditBio() {
           <select
             name="permanentDivision"
             className="input input-bordered"
+            value={biodata.permanentDivision}
+            onChange={handleChange}
             required
           >
+            <option disabled value="">
+              Select Permanent Division
+            </option>
             <option value="Dhaka">Dhaka</option>
             <option value="Chattagram">Chattagram</option>
             <option value="Rangpur">Rangpur</option>
@@ -227,8 +296,13 @@ function EditBio() {
           <select
             name="presentDivision"
             className="input input-bordered"
+            value={biodata.presentDivision}
+            onChange={handleChange}
             required
           >
+            <option disabled value="">
+              Select Present Division
+            </option>
             <option value="Dhaka">Dhaka</option>
             <option value="Chattagram">Chattagram</option>
             <option value="Rangpur">Rangpur</option>
@@ -246,7 +320,8 @@ function EditBio() {
           <input
             type="number"
             name="expectedPartnerAge"
-            placeholder="Expected Partner Age"
+            value={biodata.expectedPartnerAge}
+            onChange={handleChange}
             className="input input-bordered"
           />
         </div>
@@ -258,7 +333,8 @@ function EditBio() {
           <input
             type="number"
             name="expectedPartnerHeight"
-            placeholder="Expected Partner Height in cm"
+            value={biodata.expectedPartnerHeight}
+            onChange={handleChange}
             className="input input-bordered"
           />
         </div>
@@ -270,7 +346,8 @@ function EditBio() {
           <input
             type="number"
             name="expectedPartnerWeight"
-            placeholder="Expected Partner Weight in kg"
+            value={biodata.expectedPartnerWeight}
+            onChange={handleChange}
             className="input input-bordered"
           />
         </div>
@@ -282,7 +359,8 @@ function EditBio() {
           <input
             type="tel"
             name="mobileNumber"
-            placeholder="Mobile Number"
+            value={biodata.mobileNumber}
+            onChange={handleChange}
             className="input input-bordered"
             required
           />

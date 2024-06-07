@@ -12,6 +12,9 @@ function UserMenu() {
       <NavLink to={"my-contact-requests"} end>
         My Contact Requests
       </NavLink>
+      <NavLink to={"got-married"} end>
+        Got Married
+      </NavLink>
     </>
   );
 }

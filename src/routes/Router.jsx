@@ -19,6 +19,8 @@ import Stats from "../Dashboard/Pages/Admin/Stats";
 import ManageUsers from "../Dashboard/Pages/Admin/ManageUsers";
 import ViewBiodata from "../Dashboard/Pages/Admin/ViewBiodata";
 import ApprovePremium from "../Dashboard/Pages/Admin/ApprovePremium";
+import GotMarried from "../Dashboard/Pages/User/GotMarried";
+import SuccessStory from "../Dashboard/Pages/Admin/SuccessStory";
 
 const router = createBrowserRouter([
   {
@@ -102,6 +104,14 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "got-married",
+        element: (
+          <PrivateRoute>
+            <GotMarried />
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "contact-requests",
         element: (
           <AdminRoute>
@@ -122,6 +132,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ApprovePremium />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "success-stories",
+        element: (
+          <AdminRoute>
+            <SuccessStory />
           </AdminRoute>
         ),
       },

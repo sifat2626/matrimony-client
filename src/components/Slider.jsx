@@ -13,25 +13,28 @@ import { Link } from "react-router-dom";
 
 const slider = [
   {
-    heading: "Crafted Clayware",
+    heading: "Find Your Perfect Match",
     description:
-      "Discover the artistry of clayware, where tradition meets innovation in every elegant design.",
-    image_url: "https://i.ibb.co/bN1hbQQ/pottery-slider-3.webp",
+      "Join our community and discover meaningful connections with singles who share your values and aspirations.",
+    image_url: "https://i.ibb.co/th8XfxF/matri1-1.jpg",
   },
   {
-    heading: "Artisanal Pottery",
+    heading: "Love Knows No Boundaries",
     description:
-      "Experience the beauty of handcrafted pottery, made with care and passion by skilled artisans.",
+      "Our platform brings together individuals from diverse backgrounds, helping you find love that transcends borders.",
     image_url: "https://i.ibb.co/pXhv7qk/pottery-slider-1.webp",
   },
   {
-    heading: "Ceramic Creations",
+    heading: "Celebrate Togetherness",
     description:
-      "Explore our collection of exquisite ceramic creations, each piece telling its own unique story.",
+      "Begin your journey to a lifetime of happiness with someone special, and create memories that last forever.",
     image_url: "https://i.ibb.co/nfjNsgz/pottery-slider-2.webp",
-
-    image_res:
-      "https://moca-theme.myshopify.com/cdn/shop/files/slider2-responsive-bg_767x.jpg?v=1614297877",
+  },
+  {
+    heading: "A New Chapter of Love",
+    description:
+      "Start your love story with us and find your soulmate who completes you in every way.",
+    image_url: "https://i.ibb.co/nfjNsgz/pottery-slider-2.webp",
   },
 ];
 
@@ -58,17 +61,19 @@ function Slider() {
             data-aos="fade-down"
             data-aos-duration="1000"
             data-once="true"
-            className={`absolute  max-w-xl  ${
-              i === 2 ? "lg:left-16 top-32" : "lg:left-1/4 top-24"
-            } p-4 text-center`}
+            className={`absolute  max-w-2xl lg:left-1/4 top-24 p-4 text-center`}
           >
-            <h3 className="text-6xl mb-4 font-extralight">{slide.heading}</h3>
-            <p className="mb-6">{slide.description}</p>
+            <h3 className="text-6xl mb-4 font-bold text-yellow-900 tracking-widest">
+              {slide.heading}
+            </h3>
+            <p className="mb-8 text-xl text-yellow-800 font-semibold mt-8 max-w-6xl">
+              {slide.description}
+            </p>
             <Link
-              to={"/all-crafts"}
-              className="bg-stone-800 text-white px-4 py-2 rounded-lg cursor-pointer"
+              to={"/bio-datas"}
+              className="bg-yellow-950 text-white px-4 py-2 rounded-lg cursor-pointer"
             >
-              Shop Now
+              Find Now
             </Link>
           </div>
         </SwiperSlide>
