@@ -5,7 +5,7 @@ import { axiosCommon } from "../hooks/useAxiosCommon";
 
 function Member({ member }) {
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState({});
   const { email } = member;
   console.log(member);
   useEffect(() => {

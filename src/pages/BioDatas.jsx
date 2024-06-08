@@ -46,7 +46,7 @@ function BioDatas() {
   if (error) return "An error has occurred: " + error.message;
 
   return (
-    <div className="flex items-start">
+    <div className="flex flex-col md:flex-row gap-6 items-start p-4 ">
       <div className="">
         <Filter
           setBiodataType={setBiodataType}
@@ -60,7 +60,7 @@ function BioDatas() {
           handleSubmit={handleSubmit}
         />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-6">
         {bioDatas.map((biodata) => (
           <Biodata key={biodata._id} biodata={biodata} />
         ))}
