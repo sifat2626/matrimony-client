@@ -27,7 +27,7 @@ function ManageContactRequests() {
 
   if (isPending) return "Loading...";
   return (
-    <div>
+    <div className="mt-8">
       <section className="container px-4 mx-auto">
         <div className="flex flex-col">
           <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

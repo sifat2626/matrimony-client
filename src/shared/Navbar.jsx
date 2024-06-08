@@ -145,10 +145,10 @@ function Navbar({ darkModeHandler, dark }) {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-green-700 text-white font-medium rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-yellow-800 text-white font-medium rounded-box w-52"
             >
               <li>
-                <Link to={"/dashboard"}>Dashboard</Link>
+                <Link to={"/dashboard/view-biodata"}>Dashboard</Link>
               </li>
 
               <li>

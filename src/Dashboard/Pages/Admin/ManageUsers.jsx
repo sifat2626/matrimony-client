@@ -55,7 +55,7 @@ function ManageUsers() {
   if (isLoading) return <p>Loading...</p>;
 
   return (
-    <div>
+    <div className="mt-8">
       <section className="container px-4 mx-auto">
         <div className="flex flex-col mb-4">
           <input
