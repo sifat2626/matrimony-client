@@ -58,27 +58,40 @@ function CheckOut() {
   };
 
   return (
-    <div>
-      <h2>CheckOut</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="">
+      <h2 className="text-center mt-8 text-yellow-800 font-bold text-2xl mb-12">
+        CheckOut
+      </h2>
+      <form
+        onSubmit={handleSubmit}
+        className="w-full md:w-1/2 lg:w-1/3 mx-auto border-2 p-4 border-yellow-800 rounded-md"
+      >
+        <label className="text-gray-500 font-medium">Email</label>
         <input
           type="email"
           name="email"
           defaultValue={user?.email}
           disabled
-          className="input input-bordered w-full"
+          className="input input-bordered w-full mb-4 mt-2"
         />
+        <label className="text-gray-500 font-medium">Biodata No.</label>
         <input
           type="number"
           name="biodataId"
           defaultValue={biodataId}
           disabled
-          className="input input-bordered w-full"
+          className="input input-bordered w-full mb-4"
         />
         <CardElement />
-        <button type="submit" disabled={!stripe}>
-          Submit
-        </button>
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            disabled={!stripe}
+            className="bg-yellow-800 mt-6 px-4 py-2 text-white font-medium rounded-md"
+          >
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );
