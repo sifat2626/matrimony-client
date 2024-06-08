@@ -8,7 +8,7 @@ function HowItWorks() {
         How It Works
       </h3>
       <div className="bg-yellow-900 py-16 ">
-        <div className=" flex justify-center ">
+        <div className=" flex justify-center dark:text-yellow-800 ">
           <div className="bg-white p-2 border-8 border-yellow-200 hover:border-yellow-400 duration-300">
             <FaRegIdCard className="text-4xl" />
           </div>
