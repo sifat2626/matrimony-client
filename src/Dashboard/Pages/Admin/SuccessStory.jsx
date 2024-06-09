@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import SuccessStoryRow from "../../../components/Dashboard/Admin/SuccessStoryRow";
 
 function SuccessStory() {
   const axiosSecure = useAxiosSecure();
   const {
     isPending,
     data: stories = [],
-    refetch,
+    // refetch,
   } = useQuery({
     queryKey: ["stories"],
     queryFn: async () => {
@@ -56,17 +57,15 @@ function SuccessStory() {
                       </th>
                     </tr>
                   </thead>
-                  {/* <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                    {requests?.contactRequests?.map((request, i) => (
-                      <ContactRequestRow
-                        key={request?.requestId}
+                  <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                    {stories?.successStories?.map((story, i) => (
+                      <SuccessStoryRow
+                        key={story?._id}
                         index={i}
-                        request={request}
-                        handleAccept={handleAccept}
-                        handleReject={handleReject}
+                        story={story}
                       />
                     ))}
-                  </tbody> */}
+                  </tbody>
                 </table>
               </div>
             </div>

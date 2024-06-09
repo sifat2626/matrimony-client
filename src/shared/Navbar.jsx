@@ -148,7 +148,7 @@ function Navbar({ darkModeHandler, dark }) {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-yellow-800 text-white font-medium rounded-box w-52"
             >
               <li>
-                <Link to={"/dashboard/view-biodata"}>Dashboard</Link>
+                <Link to={"/dashboard/edit-bio"}>Dashboard</Link>
               </li>
 
               <li>
