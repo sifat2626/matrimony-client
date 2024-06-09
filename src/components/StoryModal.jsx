@@ -8,7 +8,7 @@ function StoryModal({ story }) {
         className="btn"
         onClick={() => document.getElementById("my_modal_5").showModal()}
       >
-        View Modal
+        View Story
       </button>
       <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
