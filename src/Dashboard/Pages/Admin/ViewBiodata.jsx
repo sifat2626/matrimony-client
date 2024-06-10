@@ -78,7 +78,7 @@ function ViewBiodata() {
             <h4></h4>
           </div>
         </div>
-        <div className="p-4 m-4 rounded-md bg-yellow-800 text-white  w-full">
+        <div className="p-4 m-4 rounded-md bg-yellow-800 text-white mx-auto w-full">
           <div className="flex justify-center">
             <h4 className="text-center mb-8 bg-green-200 text-green-600 px-2 py-1 rounded-md font-bold inline-block">
               Biodata No. {biodata.biodataId}
