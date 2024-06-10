@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import DetailItem from "../../../components/DetailItem";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 function ViewBiodata() {
   const navigate = useNavigate();
@@ -22,10 +23,25 @@ function ViewBiodata() {
   }, [axiosSecure, user.email]);
 
   const handlePremium = async () => {
-    await axiosSecure("/request-premium");
-    if (buttonRef.current) {
-      buttonRef.current.innerText = "Requested";
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Request",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await axiosSecure("/request-premium");
+        if (buttonRef.current) {
+          buttonRef.current.innerText = "Requested";
+        }
+        Swal.fire({
+          title: "Requested",
+          icon: "success",
+        });
+      }
+    });
   };
 
   if (biodataLoading)
