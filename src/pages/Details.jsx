@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import DetailItem from "../components/DetailItem";
 import { axiosCommon } from "../hooks/useAxiosCommon";
 import Biodata from "../components/Biodata";
+import { setWishlist } from "../utils/localStorage";
 
 function Details() {
   const axiosSecure = useAxiosSecure();
@@ -59,6 +60,14 @@ function Details() {
               <h4>{biodata.mobileNumber}</h4>
             </div>
           )}
+          <div className="text-center mt-2">
+            <button
+              onClick={() => setWishlist(biodata.biodataId)}
+              className="border-2 py-1 inline-block px-4 bg-pink-600 text-white font-semibold text-xl rounded-md"
+            >
+              Add to Favourites!
+            </button>
+          </div>
         </div>
         <div className="p-4 m-4 rounded-md bg-yellow-800 text-white  w-2/3">
           <div className="flex justify-center">

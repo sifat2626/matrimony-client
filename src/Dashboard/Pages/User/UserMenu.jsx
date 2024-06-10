@@ -15,6 +15,9 @@ function UserMenu() {
       <NavLink to={"got-married"} end>
         Got Married
       </NavLink>
+      <NavLink to={"favourites"} end>
+        Favourites
+      </NavLink>
     </>
   );
 }

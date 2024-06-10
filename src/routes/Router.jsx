@@ -21,6 +21,7 @@ import ViewBiodata from "../Dashboard/Pages/Admin/ViewBiodata";
 import ApprovePremium from "../Dashboard/Pages/Admin/ApprovePremium";
 import GotMarried from "../Dashboard/Pages/User/GotMarried";
 import SuccessStory from "../Dashboard/Pages/Admin/SuccessStory";
+import Favourites from "../Dashboard/Pages/User/Favourites";
 
 const router = createBrowserRouter([
   {
@@ -110,6 +111,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <ViewBiodata />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "favourites",
+        element: (
+          <PrivateRoute>
+            <Favourites />
           </PrivateRoute>
         ),
       },
