@@ -81,11 +81,21 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Stats />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <Stats />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "edit-bio",
-        element: <EditBio />,
+        element: (
+          <PrivateRoute>
+            <EditBio />
+          </PrivateRoute>
+        ),
       },
       {
         path: "my-contact-requests",

@@ -46,9 +46,9 @@ function Biodata({ biodata }) {
           <h4 className="w-full border-r-4">Age</h4>
           <p className="w-full">{age}</p>
         </div>
-        <div className="flex gap-8">
+        <div className="flex gap-8 items-center">
           <h4 className="w-full border-r-4">Occupation</h4>
-          <p className="w-full">{occupation}</p>
+          <p className="w-full text-sm">{occupation}</p>
         </div>
       </div>
       <div className="flex justify-center">

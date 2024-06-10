@@ -15,27 +15,36 @@ function ViewBiodata() {
 
   useEffect(() => {
     setBiodataLoading(true);
-    axiosSecure(`biodata/byEmail/${user.email}`).then((res) =>
-      setBiodata(res.data)
-    );
-    setBiodataLoading(false);
-  }, []);
+    axiosSecure(`biodata/byEmail/${user.email}`).then((res) => {
+      setBiodata(res.data);
+      setBiodataLoading(false);
+    });
+  }, [axiosSecure, user.email]);
 
   const handlePremium = async () => {
     await axiosSecure("/request-premium");
-    console.log(buttonRef);
     if (buttonRef.current) {
-      // Use current to access the ref
       buttonRef.current.innerText = "Requested";
     }
   };
 
-  if (biodataLoading) return <p>Loading...</p>;
+  if (biodataLoading)
+    return <span className="loading loading-dots loading-lg"></span>;
 
-  if (Object.keys(biodata).length === 0) {
-    navigate("dashboard/edit-bio");
-    return null; // Render nothing until data is fetched
-  }
+  if (!biodata.biodataId)
+    return (
+      <div className="text-center mt-12">
+        <p className="text-red-500 font-bold text-xl">
+          Create a biodata first!
+        </p>
+        <Link
+          to={"/dashboard/edit-bio"}
+          className="bg-yellow-800 text-white px-4 py-2 rounded-md yyinline-block"
+        >
+          Create Bio
+        </Link>
+      </div>
+    );
 
   return (
     <div>
@@ -52,21 +61,6 @@ function ViewBiodata() {
             </h4>
             <h4></h4>
           </div>
-          {user.premiumStatus !== "Premium" ? (
-            <div className="text-center mt-4">
-              <Link
-                to={`/checkout/${biodata?.biodataId}`}
-                className="border-2 py-1 inline-block px-4 bg-green-800 text-white font-semibold text-xl rounded-md"
-              >
-                Request Contact
-              </Link>
-            </div>
-          ) : (
-            <div className="text-center mt-4 font-medium text-xl">
-              <h4> {biodata.contactEmail}</h4>
-              <h4>{biodata.mobileNumber}</h4>
-            </div>
-          )}
         </div>
         <div className="p-4 m-4 rounded-md bg-yellow-800 text-white  w-full">
           <div className="flex justify-center">

@@ -53,9 +53,9 @@ function Member({ member }) {
           <h4 className="w-full border-r-4">Age</h4>
           <p className="w-full">{data?.age}</p>
         </div>
-        <div className="flex gap-8">
+        <div className="flex gap-8 items-center">
           <h4 className="w-full border-r-4">Occupation</h4>
-          <p className="w-full">{data?.occupation}</p>
+          <p className="w-full text-sm">{data?.occupation}</p>
         </div>
       </div>
       <div className="flex justify-center">
