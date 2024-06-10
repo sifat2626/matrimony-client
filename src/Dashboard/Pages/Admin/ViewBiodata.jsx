@@ -1,27 +1,17 @@
-import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useEffect, useRef, useState } from "react";
 import DetailItem from "../../../components/DetailItem";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 
 function ViewBiodata() {
+  const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
   const [biodata, setBiodata] = useState({});
   const [biodataLoading, setBiodataLoading] = useState(true);
   const buttonRef = useRef(null); // Initialize the ref correctly
 
-  const {
-    isLoading,
-    data: user = {},
-    refetch,
-  } = useQuery({
-    queryKey: ["user"],
-    queryFn: async () => {
-      const { data } = await axiosSecure(`/user`);
-      console.log(data.user);
-      return data.user;
-    },
-  });
+  const { user } = useAuth();
 
   useEffect(() => {
     setBiodataLoading(true);
@@ -38,10 +28,14 @@ function ViewBiodata() {
       // Use current to access the ref
       buttonRef.current.innerText = "Requested";
     }
-    refetch();
   };
 
-  if (isLoading || biodataLoading) return <p>Loading...</p>;
+  if (biodataLoading) return <p>Loading...</p>;
+
+  if (Object.keys(biodata).length === 0) {
+    navigate("dashboard/edit-bio");
+    return null; // Render nothing until data is fetched
+  }
 
   return (
     <div>
