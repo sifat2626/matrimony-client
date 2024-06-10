@@ -52,7 +52,7 @@ function ViewBiodata() {
         </p>
         <Link
           to={"/dashboard/edit-bio"}
-          className="bg-yellow-800 text-white px-4 py-2 rounded-md yyinline-block"
+          className="bg-yellow-800 text-white px-4 py-2 rounded-md inline-block mt-4"
         >
           Create Bio
         </Link>
