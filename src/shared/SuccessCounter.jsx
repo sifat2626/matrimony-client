@@ -25,8 +25,8 @@ function SuccessCounter() {
   };
   console.log(stats);
   return (
-    <div className=" bg-yellow-800 py-12 text-white mt-12 flex grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-[5%] justify-between">
-      <div className="text-center text-2xl font-medium">
+    <div className=" bg-yellow-800 py-12 text-white mt-12 flex flex-col md:flex-row gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-[5%] justify-between">
+      <div className="col-span-1 text-center text-2xl font-medium">
         <CountUp
           start={0}
           end={count}
@@ -43,7 +43,7 @@ function SuccessCounter() {
         </CountUp>
         <p className="text-xl font-semibold mt-4">Successful Marriages</p>
       </div>
-      <div className="text-center text-2xl font-medium">
+      <div className="col-span-1 text-center text-2xl font-medium">
         <CountUp
           start={0}
           end={stats.count}
@@ -60,7 +60,7 @@ function SuccessCounter() {
         </CountUp>
         <p className="text-xl font-semibold mt-4">Total Biodata</p>
       </div>
-      <div className="text-center text-2xl font-medium">
+      <div className="col-span-1 text-center text-2xl font-medium">
         <CountUp
           start={0}
           end={stats.maleCount}
@@ -77,7 +77,7 @@ function SuccessCounter() {
         </CountUp>
         <p className="text-xl font-semibold mt-4">Male Biodata</p>
       </div>
-      <div className="text-center text-2xl font-medium">
+      <div className="col-span-1 text-center text-2xl font-medium">
         <CountUp
           start={0}
           end={stats.femaleCount}
