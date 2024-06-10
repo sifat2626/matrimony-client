@@ -22,19 +22,19 @@ const slider = [
     heading: "Love Knows No Boundaries",
     description:
       "Our platform brings together individuals from diverse backgrounds, helping you find love that transcends borders.",
-    image_url: "https://i.ibb.co/pXhv7qk/pottery-slider-1.webp",
+    image_url: "https://i.ibb.co/VLtkjN4/matri2-1.jpg",
   },
   {
     heading: "Celebrate Togetherness",
     description:
       "Begin your journey to a lifetime of happiness with someone special, and create memories that last forever.",
-    image_url: "https://i.ibb.co/nfjNsgz/pottery-slider-2.webp",
+    image_url: "https://i.ibb.co/CQbhRTr/matri3-1.jpg",
   },
   {
     heading: "A New Chapter of Love",
     description:
       "Start your love story with us and find your soulmate who completes you in every way.",
-    image_url: "https://i.ibb.co/nfjNsgz/pottery-slider-2.webp",
+    image_url: "https://i.ibb.co/FJz13Dh/matri4-1.jpg",
   },
 ];
 
