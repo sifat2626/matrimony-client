@@ -1,8 +1,50 @@
-# React + Vite
+# TieTheKnot: Your Gateway to Matrimonial Bliss
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to TieTheKnot, your premier destination for navigating the realm of matrimonial opportunities!
 
-Currently, two official plugins are available:
+## Live Site:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Explore the live TieTheKnot matrimony portal [here](https://tietheknot-3a6f0.web.app).
+
+## Features:
+
+- **Extensive Biodata Listings**: Browse through a vast array of biodata profiles spanning various preferences and backgrounds.
+- **Advanced Search Functionality**: Easily find relevant matches using our intuitive search feature.
+- **User-Friendly Dashboard**: Access your personalized dashboard to manage your profile and track contact requests.
+- **Seamless Contact Request Process**: Send and manage contact requests effortlessly with a streamlined process designed for user convenience.
+- **Premium Membership**: Upgrade to premium membership for additional benefits and enhanced visibility.
+- **Success Stories**: Share and read inspiring success stories from happy couples.
+
+## Packages Used:
+
+- `react-query`: Data fetching and state management.
+- `query-string`: Parse and stringify URL query strings.
+- `react-hot-toast`: Notifications for user actions.
+- `axios`: Promise-based HTTP client for the browser and Node.js.
+
+## Technologies Used:
+
+- **Frontend**:
+  - `React`
+  - `Tailwind CSS`
+  - `React Router`
+  - `Axios`
+- **Backend**:
+  - `Node.js`
+  - `Express.js`
+  - `MongoDB`
+  - `Mongoose`
+- **Authentication**:
+  - `JSON Web Tokens (JWT)`
+- **Deployment**:
+  - `Vercel`
+
+## Getting Started:
+
+1. Clone this repository.
+2. Install dependencies using `npm install`.
+3. Set up environment variables as per the provided template.
+4. Start the development server with `npm run dev`.
+5. Access the TieTheKnot matrimony portal locally through your preferred web browser.
+
+Embark on your journey to find the perfect match with TieTheKnot, where matrimonial opportunities await! Dive into a world of possibilities and elevate your matrimonial aspirations with us. Happy matching!
