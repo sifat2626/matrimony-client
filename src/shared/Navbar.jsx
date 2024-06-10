@@ -53,7 +53,7 @@ function Navbar({ darkModeHandler, dark }) {
     </>
   );
   return (
-    <div className="navbar bg-white dark:bg-[#66451C] px-[5%] py-4 shadow-md">
+    <div className="navbar z-50 bg-white dark:bg-[#66451C] px-[5%] py-4 shadow-md">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -74,7 +74,7 @@ function Navbar({ darkModeHandler, dark }) {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[50] p-2 shadow bg-base-100 rounded-box w-52"
           >
             {navList}
           </ul>
@@ -149,10 +149,6 @@ function Navbar({ darkModeHandler, dark }) {
             >
               <li>
                 <Link to={"/dashboard/edit-bio"}>Dashboard</Link>
-              </li>
-
-              <li>
-                <Link onClick={logOut}>Logout</Link>
               </li>
             </ul>
           </div>

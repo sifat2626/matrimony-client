@@ -1,6 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 
 function UserMenu() {
+  const { logOut } = useAuth();
   return (
     <>
       <NavLink to={"view-biodata"} end>
@@ -18,6 +20,9 @@ function UserMenu() {
       <NavLink to={"favourites"} end>
         Favourites
       </NavLink>
+      <Link onClick={logOut} end>
+        LogOut
+      </Link>
     </>
   );
 }

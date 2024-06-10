@@ -45,7 +45,7 @@ function Filter({
           </label>
           <select
             name="biodataType"
-            className="select select-bordered w-full max-w-xs mt-2"
+            className="select select-bordered w-full  mt-2"
             value={biodataType}
             onChange={(e) => setBiodataType(e.target.value)}
           >
@@ -60,7 +60,7 @@ function Filter({
           </label>
           <select
             name="division"
-            className="select select-bordered w-full max-w-xs mt-2"
+            className="select select-bordered w-full  mt-2"
             value={division}
             onChange={(e) => setDivision(e.target.value)}
           >

@@ -9,7 +9,7 @@ function Dashboard() {
     <div className="overflow-x-hidden">
       <Navbar />
 
-      <div className="flex gap-16">
+      <div className="flex flex-col lg:flex-row gap-16 p-4 ">
         <div className="group">
           <Sidebar />
         </div>

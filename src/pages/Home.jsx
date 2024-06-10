@@ -7,7 +7,9 @@ import SuccessStory from "../shared/SuccessStory";
 function Home() {
   return (
     <div>
-      <Banner />
+      <div className="-z-10">
+        <Banner />
+      </div>
       <Premium />
       <HowItWorks />
       <SuccessCounter />
