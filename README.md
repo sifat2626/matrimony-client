@@ -14,6 +14,10 @@ Explore the live TieTheKnot matrimony portal [here](https://tietheknot-3a6f0.web
 - **Seamless Contact Request Process**: Send and manage contact requests effortlessly with a streamlined process designed for user convenience.
 - **Premium Membership**: Upgrade to premium membership for additional benefits and enhanced visibility.
 - **Success Stories**: Share and read inspiring success stories from happy couples.
+- **Add to Favorites**: Save your favorite profiles for quick access later.
+- **Profile Verification**: Ensures the authenticity of users by verifying profile information.
+- **Admin Dashboard**: Comprehensive admin dashboard to manage users, handle premium requests, and oversee site activities.
+- **Secure Authentication**: Provides secure authentication with JSON Web Tokens (JWT).
 
 ## Packages Used:
 
