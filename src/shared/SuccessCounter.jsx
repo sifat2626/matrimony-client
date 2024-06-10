@@ -30,8 +30,8 @@ function SuccessCounter() {
         <CountUp
           start={0}
           end={count}
-          delay={2}
-          duration={3}
+          delay={0}
+          duration={1}
           enableScrollSpy
           redraw={true}
         >
@@ -47,8 +47,8 @@ function SuccessCounter() {
         <CountUp
           start={0}
           end={stats.count}
-          delay={2}
-          duration={3}
+          delay={0}
+          duration={1}
           enableScrollSpy
           redraw={true}
         >
@@ -64,8 +64,8 @@ function SuccessCounter() {
         <CountUp
           start={0}
           end={stats.maleCount}
-          delay={2}
-          duration={3}
+          delay={0}
+          duration={1}
           enableScrollSpy
           redraw={true}
         >
@@ -81,8 +81,8 @@ function SuccessCounter() {
         <CountUp
           start={0}
           end={stats.femaleCount}
-          delay={2}
-          duration={3}
+          delay={0}
+          duration={1}
           enableScrollSpy
           redraw={true}
         >
