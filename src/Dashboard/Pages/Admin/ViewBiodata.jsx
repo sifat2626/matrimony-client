@@ -44,10 +44,7 @@ function ViewBiodata() {
     });
   };
 
-  if (biodataLoading)
-    return <span className="loading loading-dots loading-lg"></span>;
-
-  if (!biodata.biodataId)
+  if (biodataLoading || !biodata.biodataId)
     return (
       <div className="text-center mt-12">
         <p className="text-red-500 font-bold text-xl">

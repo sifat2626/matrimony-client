@@ -61,6 +61,7 @@ const Registration = () => {
         email: result?.user?.email,
         name: result?.user?.displayName,
       });
+
       navigate(from, { replace: true });
       toast.success("Sign Up successful");
     } catch (error) {

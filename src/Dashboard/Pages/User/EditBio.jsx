@@ -44,6 +44,9 @@ function EditBio() {
   };
 
   useEffect(() => {
+    if (!user?.email) {
+      window.location.reload();
+    }
     const fetchBiodata = async () => {
       try {
         const response = await axiosSecure.get(
@@ -83,6 +86,8 @@ function EditBio() {
       return updatedBiodata;
     });
   };
+
+  console.log(user.email);
 
   return (
     <div className="">
